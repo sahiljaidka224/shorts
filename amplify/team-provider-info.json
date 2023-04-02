@@ -10,6 +10,11 @@
       "StackName": "amplify-shorts-dev-105634",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:884001155399:stack/amplify-shorts-dev-105634/3396f3e0-d0f1-11ed-a105-06c7bbbe3438",
       "AmplifyAppId": "dmtq94yq2kh81"
+    },
+    "categories": {
+      "api": {
+        "shorts": {}
+      }
     }
   }
 }
