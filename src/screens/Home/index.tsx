@@ -3,7 +3,25 @@ import { Post } from "../../components";
 import posts from "../../../data/posts";
 import { Dimensions, FlatList, SafeAreaView } from "react-native";
 
+import { API, graphqlOperation } from "aws-amplify";
+import { listPosts } from "../../graphql/queries";
+import { useEffect, useState } from "react";
+
 export const Home = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await API.graphql<any>(graphqlOperation(listPosts));
+        setPosts(response.data.listPosts.items);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
   return (
     <SafeAreaView>
       <FlatList

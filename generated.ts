@@ -80,9 +80,7 @@ export type Post = {
   id: string,
   videoUri: string,
   description: string,
-  userId: string,
   user?: User | null,
-  songID: string,
   song?: Song | null,
   createdAt: string,
   updatedAt: string,
@@ -114,8 +112,6 @@ export type CreatePostInput = {
   id?: string | null,
   videoUri: string,
   description: string,
-  userId: string,
-  songID: string,
   userPostsId?: string | null,
   postSongId?: string | null,
 };
@@ -123,8 +119,6 @@ export type CreatePostInput = {
 export type ModelPostConditionInput = {
   videoUri?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  userId?: ModelIDInput | null,
-  songID?: ModelIDInput | null,
   and?: Array< ModelPostConditionInput | null > | null,
   or?: Array< ModelPostConditionInput | null > | null,
   not?: ModelPostConditionInput | null,
@@ -152,8 +146,6 @@ export type UpdatePostInput = {
   id: string,
   videoUri?: string | null,
   description?: string | null,
-  userId?: string | null,
-  songID?: string | null,
   userPostsId?: string | null,
   postSongId?: string | null,
 };
@@ -206,8 +198,6 @@ export type ModelPostFilterInput = {
   id?: ModelIDInput | null,
   videoUri?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  userId?: ModelIDInput | null,
-  songID?: ModelIDInput | null,
   and?: Array< ModelPostFilterInput | null > | null,
   or?: Array< ModelPostFilterInput | null > | null,
   not?: ModelPostFilterInput | null,
@@ -273,8 +263,6 @@ export type ModelSubscriptionPostFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   videoUri?: ModelSubscriptionStringInput | null,
   description?: ModelSubscriptionStringInput | null,
-  userId?: ModelSubscriptionIDInput | null,
-  songID?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionPostFilterInput | null > | null,
   or?: Array< ModelSubscriptionPostFilterInput | null > | null,
 };
@@ -306,8 +294,6 @@ export type CreateUserMutation = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -339,8 +325,6 @@ export type UpdateUserMutation = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -372,8 +356,6 @@ export type DeleteUserMutation = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -397,7 +379,6 @@ export type CreatePostMutation = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -411,7 +392,6 @@ export type CreatePostMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,
@@ -438,7 +418,6 @@ export type UpdatePostMutation = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -452,7 +431,6 @@ export type UpdatePostMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,
@@ -479,7 +457,6 @@ export type DeletePostMutation = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -493,7 +470,6 @@ export type DeletePostMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,
@@ -575,8 +551,6 @@ export type GetUserQuery = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -625,7 +599,6 @@ export type GetPostQuery = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -639,7 +612,6 @@ export type GetPostQuery = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,
@@ -669,7 +641,6 @@ export type ListPostsQuery = {
       id: string,
       videoUri: string,
       description: string,
-      userId: string,
       user?:  {
         __typename: "User",
         id: string,
@@ -679,7 +650,6 @@ export type ListPostsQuery = {
         createdAt: string,
         updatedAt: string,
       } | null,
-      songID: string,
       song?:  {
         __typename: "Song",
         id: string,
@@ -751,8 +721,6 @@ export type OnCreateUserSubscription = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -783,8 +751,6 @@ export type OnUpdateUserSubscription = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -815,8 +781,6 @@ export type OnDeleteUserSubscription = {
         id: string,
         videoUri: string,
         description: string,
-        userId: string,
-        songID: string,
         createdAt: string,
         updatedAt: string,
         userPostsId?: string | null,
@@ -839,7 +803,6 @@ export type OnCreatePostSubscription = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -853,7 +816,6 @@ export type OnCreatePostSubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,
@@ -879,7 +841,6 @@ export type OnUpdatePostSubscription = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -893,7 +854,6 @@ export type OnUpdatePostSubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,
@@ -919,7 +879,6 @@ export type OnDeletePostSubscription = {
     id: string,
     videoUri: string,
     description: string,
-    userId: string,
     user?:  {
       __typename: "User",
       id: string,
@@ -933,7 +892,6 @@ export type OnDeletePostSubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    songID: string,
     song?:  {
       __typename: "Song",
       id: string,

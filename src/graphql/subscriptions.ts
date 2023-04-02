@@ -14,8 +14,6 @@ export const onCreateUser = /* GraphQL */ `
           id
           videoUri
           description
-          userId
-          songID
           createdAt
           updatedAt
           userPostsId
@@ -40,8 +38,6 @@ export const onUpdateUser = /* GraphQL */ `
           id
           videoUri
           description
-          userId
-          songID
           createdAt
           updatedAt
           userPostsId
@@ -66,8 +62,6 @@ export const onDeleteUser = /* GraphQL */ `
           id
           videoUri
           description
-          userId
-          songID
           createdAt
           updatedAt
           userPostsId
@@ -86,7 +80,6 @@ export const onCreatePost = /* GraphQL */ `
       id
       videoUri
       description
-      userId
       user {
         id
         name
@@ -98,7 +91,6 @@ export const onCreatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name
@@ -119,7 +111,6 @@ export const onUpdatePost = /* GraphQL */ `
       id
       videoUri
       description
-      userId
       user {
         id
         name
@@ -131,7 +122,6 @@ export const onUpdatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name
@@ -152,7 +142,6 @@ export const onDeletePost = /* GraphQL */ `
       id
       videoUri
       description
-      userId
       user {
         id
         name
@@ -164,7 +153,6 @@ export const onDeletePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name

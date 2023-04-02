@@ -15,11 +15,7 @@ type Post @model {
   id: ID!
   videoUri: String!
   description: String!
-
-  userId: ID!
   user: User @belongsTo
-
-  songID: ID!
   song: Song @hasOne
 }
 
