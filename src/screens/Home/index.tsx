@@ -1,6 +1,5 @@
-import { Post } from "../../components";
+import { Post, Post as PostType } from "../../components";
 
-import posts from "../../../data/posts";
 import { Dimensions, FlatList, SafeAreaView } from "react-native";
 
 import { API, graphqlOperation } from "aws-amplify";
@@ -8,7 +7,7 @@ import { listPosts } from "../../graphql/queries";
 import { useEffect, useState } from "react";
 
 export const Home = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
     const fetchPosts = async () => {

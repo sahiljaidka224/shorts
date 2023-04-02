@@ -77,7 +77,7 @@ const MusicImage = styled.Image`
   border-color: #fff;
 `;
 
-interface Post {
+export interface Post {
   id: string;
   videoUri: string;
   liked: boolean;
