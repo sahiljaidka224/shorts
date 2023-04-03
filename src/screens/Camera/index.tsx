@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Camera as ExpoCamera, CameraType } from "expo-camera";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components/native";
@@ -33,6 +34,7 @@ const StopButton = styled.TouchableOpacity`
 export const Camera = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [permission, requestPermission] = ExpoCamera.useCameraPermissions();
+  const navigation = useNavigation();
 
   const cameraRef = useRef<ExpoCamera | null>(null);
 
@@ -40,11 +42,11 @@ export const Camera = () => {
     if (!permission?.granted) {
       requestPermission();
     }
-  }, []);
+  }, [permission]);
 
   console.log({ permission });
 
-  if (!permission?.granted) return null;
+  // if (!permission?.granted) return null;
 
   const onRecord = async () => {
     if (!cameraRef) return;
@@ -54,6 +56,7 @@ export const Camera = () => {
 
       const data = await cameraRef.current?.recordAsync({ maxDuration: 10 });
       console.log({ data });
+      navigation.navigate("Publish", { videoUri: data?.uri });
       return;
     }
 

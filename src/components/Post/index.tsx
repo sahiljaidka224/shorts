@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
+import { Storage } from "aws-amplify";
 import { ResizeMode, Video } from "expo-av";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -101,18 +102,10 @@ export interface Post {
 export const Post: React.FC<{ post: Post }> = ({ post }) => {
   const [postState, setPost] = useState<Post>(post);
   const [paused, setPaused] = useState<boolean>(false);
+  const [videoUri, setVideoUri] = useState<string | null>("");
 
-  const {
-    id,
-    user,
-    videoUri,
-    description,
-    song,
-    likesCount,
-    comments,
-    shares,
-    liked,
-  } = postState;
+  const { id, user, description, song, likesCount, comments, shares, liked } =
+    postState;
 
   const onPlayPause = () => {
     setPaused(!paused);
@@ -125,6 +118,19 @@ export const Post: React.FC<{ post: Post }> = ({ post }) => {
       likesCount: liked ? likesCount - 1 : likesCount + 1,
     });
   };
+
+  useEffect(() => {
+    const getVideoUri = async () => {
+      if (post.videoUri.startsWith("http")) {
+        setVideoUri(post.videoUri);
+        return;
+      }
+
+      setVideoUri(await Storage.get(post.videoUri));
+    };
+
+    getVideoUri();
+  }, []);
 
   return (
     <Container>
@@ -175,15 +181,17 @@ export const Post: React.FC<{ post: Post }> = ({ post }) => {
                 <Text style={styles.description}>{description}</Text>
                 <View style={styles.musicContainer}>
                   <Ionicons name="md-musical-note" size={20} color="white" />
-                  <Text style={styles.songName}>{song.name}</Text>
+                  <Text style={styles.songName}>
+                    {song ? song.name : "random"}
+                  </Text>
                 </View>
               </BottomLeftContainer>
               <BottomRightContainer>
                 <MusicImage
                   source={{
-                    uri:
-                      song.uri ??
-                      "https://cdn.pixabay.com/photo/2016/02/28/12/55/boy-1226964_1280.jpg",
+                    uri: song
+                      ? song.uri
+                      : "https://cdn.pixabay.com/photo/2016/02/28/12/55/boy-1226964_1280.jpg",
                   }}
                 />
               </BottomRightContainer>

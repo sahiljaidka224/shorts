@@ -1,0 +1,16 @@
+{
+  "resourceName": "shorts",
+  "policyUUID": "6abd2811",
+  "bucketName": "shorts209c4410ad944cd1ab32a7bd0a78084f",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

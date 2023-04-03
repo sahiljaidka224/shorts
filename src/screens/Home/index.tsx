@@ -1,6 +1,6 @@
 import { Post, Post as PostType } from "../../components";
 
-import { Dimensions, FlatList, View } from "react-native";
+import { Dimensions, FlatList } from "react-native";
 
 import { API, graphqlOperation } from "aws-amplify";
 import { listPosts } from "../../graphql/queries";
@@ -21,6 +21,8 @@ export const Home = () => {
 
     fetchPosts();
   }, []);
+
+  console.log({ posts });
 
   return (
     <>
