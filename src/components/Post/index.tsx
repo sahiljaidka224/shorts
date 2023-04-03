@@ -12,7 +12,7 @@ import styled from "styled-components/native";
 
 const Container = styled.View`
   width: 100%;
-  height: ${Dimensions.get("window").height - 70}px;
+  height: ${Dimensions.get("window").height - 100}px;
 `;
 
 const VideoContainer = styled(Video)`
@@ -24,7 +24,7 @@ const VideoContainer = styled(Video)`
 `;
 
 const BottomViewContainer = styled.View`
-  height: ${Dimensions.get("window").height - 70}px;
+  height: ${Dimensions.get("window").height - 100}px;
   justify-content: flex-end;
 `;
 
