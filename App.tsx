@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "red" }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar style="auto" />
       <RootNavigation />
     </SafeAreaView>

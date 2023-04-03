@@ -1,6 +1,6 @@
 import { Post, Post as PostType } from "../../components";
 
-import { Dimensions, FlatList, SafeAreaView } from "react-native";
+import { Dimensions, FlatList, View } from "react-native";
 
 import { API, graphqlOperation } from "aws-amplify";
 import { listPosts } from "../../graphql/queries";
@@ -21,8 +21,9 @@ export const Home = () => {
 
     fetchPosts();
   }, []);
+
   return (
-    <SafeAreaView>
+    <>
       <FlatList
         style={{ flexGrow: 0 }}
         data={posts}
@@ -33,6 +34,6 @@ export const Home = () => {
         snapToAlignment="start"
         decelerationRate="fast"
       />
-    </SafeAreaView>
+    </>
   );
 };
